@@ -61,6 +61,7 @@ namespace realminecraftgame
 
             Raylib.UnloadTexture(map);
             Raylib.UnloadTexture(explosion);
+            Raylib.UnloadTexture(villager);
             Raylib.CloseWindow();
         }
 
