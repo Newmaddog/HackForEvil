@@ -99,7 +99,7 @@ namespace realminecraftgame
                 }
 
                 Explosion();
-
+                KillDisplay displayKillCount = new KillDisplay();
                 Raylib.EndDrawing();
             }
 
