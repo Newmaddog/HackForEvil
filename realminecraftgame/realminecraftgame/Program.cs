@@ -51,6 +51,7 @@ namespace realminecraftgame
                     spinnerActive = true;
                     spinTimer = 0f;
                     explosionPosition = Raylib.GetMousePosition();
+                    spawnSystem.Test(Raylib.GetMousePosition());
                     Console.WriteLine(Raylib.GetMousePosition());
                 }
                 if (isBombDroppedAudio && !Raylib.IsSoundPlaying(fallingBombSound))
@@ -69,20 +70,20 @@ namespace realminecraftgame
                 {
                     for (int i = 0; i < spawnSystem.GetVillagers().Count; i++)
                     {
-                        if (spawnSystem.GetVillagers()[i].GetIsAlive())
+                        if (spawnSystem.GetVillagers()[i].GetIsWhyyy())
                         {
                             Raylib.DrawTexture(
                         villager,
-                        (int)spawnSystem.GetVillagers()[i].GetPositionX(),
-                        (int)spawnSystem.GetVillagers()[i].GetPositionY(),
+                        (int)spawnSystem.GetVillagers()[i].GetIStHIS1(),
+                        (int)spawnSystem.GetVillagers()[i].GetIStHIS2(),
                         Color.White);
                         }
                         else
                         {
                             Raylib.DrawTexture(
                         villager,
-                        (int)spawnSystem.GetVillagers()[i].GetPositionX() - villager.Width / 2,
-                        (int)spawnSystem.GetVillagers()[i].GetPositionY() - villager.Height / 2,
+                        (int)spawnSystem.GetVillagers()[i].GetIStHIS1() - villager.Width / 2,
+                        (int)spawnSystem.GetVillagers()[i].GetIStHIS2() - villager.Height / 2,
                         Color.Red);
                         }
                     }
