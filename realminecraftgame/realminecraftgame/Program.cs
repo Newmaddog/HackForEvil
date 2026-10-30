@@ -18,7 +18,8 @@ namespace realminecraftgame
             Texture2D afterMatchExplosion = Raylib.LoadTexture("assets/newexplo.png");
             Texture2D villager = Raylib.LoadTexture("assets/villagerIcon.png");
             Texture2D spinner = Raylib.LoadTexture("assets/torpedo.png");
-
+            float explosionTimer = 0f;
+            float explosionDuration = 1.5f;
             villager.Width = 12;
             villager.Height = 12;
             float scale = 0.3f;
@@ -27,7 +28,7 @@ namespace realminecraftgame
             int flashHeight = flashBang.Height;
             int flashWidth = flashBang.Width;
             Raylib.InitAudioDevice();
-
+            Vector2 temp = new Vector2(0, 0);
             Vector2 explosionPosition = new Vector2(0, 0);
             bool isBombDroppedAudio = false;
             bool showExplosion = false;
@@ -50,15 +51,14 @@ namespace realminecraftgame
                     showExplosion = false;
                     spinnerActive = true;
                     spinTimer = 0f;
+                    temp = Raylib.GetMousePosition();
                     explosionPosition = Raylib.GetMousePosition();
-                    spawnSystem.Test(Raylib.GetMousePosition());
                     Console.WriteLine(Raylib.GetMousePosition());
                 }
                 if (isBombDroppedAudio && !Raylib.IsSoundPlaying(fallingBombSound))
                 {
-              
+
                     Raylib.PlaySound(villiagerSound);
-                        showExplosion = true;
 
                     isBombDroppedAudio = false;
                 }
@@ -92,10 +92,14 @@ namespace realminecraftgame
                 if (spinnerActive)
                 {
                     spinTimer += Raylib.GetFrameTime();
-                     
+
                     if (spinTimer >= 3.6f)
                     {
                         spinnerActive = false;
+                        showExplosion = true;
+                        explosionTimer = 0f;
+                        spawnSystem.Test(temp);
+
                     }
 
                     float size = 500f * (1f - spinTimer / 3.6f);
@@ -119,18 +123,23 @@ namespace realminecraftgame
                 0f,
                  scale,
                  Color.White
-    );
+    ); explosionTimer += Raylib.GetFrameTime();
+
+                    if (explosionTimer >= explosionDuration)
+                    {
+                        showExplosion = false;
+                    }
                 }
-    //            if (showFlashBang)
-    //            {
-    //                Raylib.DrawTextureEx(flashBang, new Vector2(
-    //            explosionPosition.X - (flashWidth *  flashScale) / 2,
-    //            explosionPosition.Y - (flashHeight * flashScale) / 2),
-    //            0f,
-    //             flashScale,
-    //             Color.White
-    //);
-    //            }
+                //            if (showFlashBang)
+                //            {
+                //                Raylib.DrawTextureEx(flashBang, new Vector2(
+                //            explosionPosition.X - (flashWidth *  flashScale) / 2,
+                //            explosionPosition.Y - (flashHeight * flashScale) / 2),
+                //            0f,
+                //             flashScale,
+                //             Color.White
+                //);
+                //            }
 
                 Explosion();
                 KillDisplay displayKillCount = new KillDisplay();
@@ -143,7 +152,7 @@ namespace realminecraftgame
             Raylib.CloseWindow();
 
 
-          
+
 
         }
 
