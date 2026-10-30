@@ -11,6 +11,8 @@ namespace realminecraftgame
 
         public List<Villager> Villagers;
 
+        public List<Villager> GetVillagers() => Villagers;
+
         public SpawnSystem(int this1, int this2, int many)
         {
             Villagers = new List<Villager>();
@@ -21,9 +23,7 @@ namespace realminecraftgame
 
             for (int i = 0; i < many; i++)
             {
-                //Villager villager = new ;
-
-                Villagers.Add(new Villager(random.Next(0, this1), random.Next(0, this2)));
+                Villagers.Add(new Villager(random.Next(350, this1), random.Next(0, this2)));
             }
 
 
