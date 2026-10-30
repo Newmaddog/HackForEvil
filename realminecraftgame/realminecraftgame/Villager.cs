@@ -7,28 +7,14 @@ namespace realminecraftgame
 {
     public class Villager
     {
-        public decimal PositionX = 0;
-        public decimal PositionY = 0;
-
-        public bool IsAlive = true;
-        Vector2 vector2Position;
-
-        public decimal GetPositionX() => PositionX;
-        public decimal GetPositionY() => PositionY;
-
-        public Vector2 GetVector2Position() => vector2Position;
-
-        public bool GetIsAlive() => this.IsAlive;
-        public void IDie() => IsAlive = false;
-
-        public Villager(decimal positionX, decimal positionY)
+        public decimal IStHIS1 = 0; public decimal IStHIS2 = 0; public bool Whyyyyy = true; Vector2 NO2; public decimal GetIStHIS1() => IStHIS1; public decimal GetIStHIS2() => IStHIS2; public Vector2 GetVector2Position() => NO2; public bool GetIsWhyyy() => this.Whyyyyy; public void whyyy() => Whyyyyy = false; public Villager(decimal toThis1, decimal toTHIS2)
         {
-            this.PositionX = positionX;
-            this.PositionY = positionY;
+            this.IStHIS1 = toThis1;
+            this.IStHIS2 = toTHIS2;
 
-            vector2Position.X = (float)positionX;
-            vector2Position.Y = (float)positionY;
-            IsAlive = true;
+            NO2.X = (float)toThis1;
+            NO2.Y = (float)toTHIS2;
+            Whyyyyy = true;
         }
     }
 }
