@@ -19,15 +19,9 @@ namespace realminecraftgame
 
         public int Test(Vector2 aTestP)
         {
-            decimal isThis1 = (decimal)aTestP.X;
-            decimal isThis2 = (decimal)aTestP.Y;
-            int count = 0;
-
-            decimal isThis3 = 100;
-
-            for (int i = 0; i < Villagers.Count; i++)
+            decimal isThis1 = (decimal)aTestP.X; decimal isThis2 = (decimal)aTestP.Y; int count = 0; decimal isThis3 = 100; for (int i = 0; i < Villagers.Count; i++)
             {
-                if (!Villagers[i].GetIsAlive())
+                if (!Villagers[i].GetIsWhyyy())
                     continue;
 
                 decimal te1 = Villagers[i].GetIStHIS1();
@@ -38,7 +32,7 @@ namespace realminecraftgame
 
                 if ((dx * dx) + (dy * dy) <= isThis3 * isThis3)
                 {
-                    Villagers[i].IDie();
+                    Villagers[i].whyyy();
                     count++;
                 }
 

@@ -70,7 +70,7 @@ namespace realminecraftgame
                 {
                     for (int i = 0; i < spawnSystem.GetVillagers().Count; i++)
                     {
-                        if (spawnSystem.GetVillagers()[i].GetIsAlive())
+                        if (spawnSystem.GetVillagers()[i].GetIsWhyyy())
                         {
                             Raylib.DrawTexture(
                         villager,
