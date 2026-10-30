@@ -50,7 +50,9 @@ namespace realminecraftgame
                 }
                 if (isBombDroppedAudio && !Raylib.IsSoundPlaying(fallingBombSound))
                 {
+              
                     Raylib.PlaySound(villiagerSound);
+     
                     isBombDroppedAudio = false;
                 }
                 Raylib.BeginDrawing();
