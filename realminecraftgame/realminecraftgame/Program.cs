@@ -12,6 +12,8 @@ namespace realminecraftgame
             Raylib.SetTargetFPS(60);
             Texture2D explosion = Raylib.LoadTexture("assets/newexplo.png");
             Texture2D villager = Raylib.LoadTexture("assets/villagerIcon.png");
+            villager.Width = 15;
+            villager.Height = 15;
             Vector2 explosionPosition = new Vector2(0, 0);
             bool showExplosion = false;
             Texture2D map = Raylib.LoadTexture("assets/map1.png");
