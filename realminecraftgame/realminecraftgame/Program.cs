@@ -7,7 +7,7 @@ namespace realminecraftgame
         static void Main(string[] args)
         {
             Console.WriteLine(Directory.GetCurrentDirectory());
-            Raylib.InitWindow(1200, 1000, "Minecraft Bomber");
+            Raylib.InitWindow(1400, 900, "Minecraft Bomber");
             Raylib.SetTargetFPS(60);
 
             Texture2D map = Raylib.LoadTexture("assets/map1.png");
