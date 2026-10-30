@@ -58,7 +58,7 @@ namespace realminecraftgame
                 if (spinnerActive)
                 {
                     spinTimer += Raylib.GetFrameTime();
-
+                     
                     if (spinTimer >= 0.6f)
                     {
                         spinnerActive = false;
