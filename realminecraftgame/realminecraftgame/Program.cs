@@ -57,7 +57,8 @@ namespace realminecraftgame
                 {
               
                     Raylib.PlaySound(villiagerSound);
-     
+                        showExplosion = true;
+
                     isBombDroppedAudio = false;
                 }
                 Raylib.BeginDrawing();
@@ -94,7 +95,6 @@ namespace realminecraftgame
                     if (spinTimer >= 3.6f)
                     {
                         spinnerActive = false;
-                        showExplosion = true;
                     }
 
                     float size = 500f * (1f - spinTimer / 3.6f);
