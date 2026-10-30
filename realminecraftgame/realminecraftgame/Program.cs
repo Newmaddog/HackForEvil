@@ -26,35 +26,40 @@ namespace realminecraftgame
             int explosionWidth = explosion.Width;
             int flashHeight = flashBang.Height;
             int flashWidth = flashBang.Width;
-
+            Raylib.InitAudioDevice();
 
             Vector2 explosionPosition = new Vector2(0, 0);
-
+            bool isBombDroppedAudio = false;
             bool showExplosion = false;
             bool spinnerActive = false;
             float spinTimer = 0f;
 
             bool showFlashBang = false;
             Texture2D map = Raylib.LoadTexture("assets/map1.png");
+            Sound fallingBombSound = Raylib.LoadSound("Sounds/FallingBombSoundEffect.mp3");
+            Sound villiagerSound = Raylib.LoadSound("Sounds/VillagerDeathSoundEffect.mp3");
 
-            var isBombSoundAutostarted = SoundEffects.BombSoundEffect();
 
-            if ( !SoundEffects.IsSoundPlaying())
-            {
-                SoundEffects.VillagerDeathSoundEffect();
-            }
 
             while (!Raylib.WindowShouldClose())
             {
                 if (Raylib.IsMouseButtonPressed(MouseButton.Left))
                 {
+                    Raylib.PlaySound(fallingBombSound);
+                    isBombDroppedAudio = true;
                     showExplosion = false;
                     spinnerActive = true;
                     spinTimer = 0f;
                     explosionPosition = Raylib.GetMousePosition();
                     Console.WriteLine(Raylib.GetMousePosition());
                 }
-
+                if (isBombDroppedAudio && !Raylib.IsSoundPlaying(fallingBombSound))
+                {
+              
+                    Raylib.PlaySound(villiagerSound);
+     
+                    isBombDroppedAudio = false;
+                }
                 Raylib.BeginDrawing();
                 Raylib.ClearBackground(Color.Black);
 
@@ -95,14 +100,14 @@ namespace realminecraftgame
                     float size = 500f * (1f - spinTimer / 0.6f);
                     float rotation = spinTimer * 720f;
 
-                    Raylib.DrawTexturePro(
-                        spinner,
-                        new Rectangle(0, 0, spinner.Width, spinner.Height),
-                        new Rectangle(explosionPosition.X, explosionPosition.Y, size, size),
-                        new Vector2(size / 2, size / 2),
-                        rotation,
-                        Color.White
-                    );
+                    //Raylib.DrawTexturePro(
+                    //    spinner,
+                    //    new Rectangle(0, 0, spinner.Width, spinner.Height),
+                    //    new Rectangle(explosionPosition.X, explosionPosition.Y, size, size),
+                    //    new Vector2(size / 2, size / 2),
+                    //    rotation,
+                    //    Color.White
+                    //);
                 }
 
                 if (showExplosion)
@@ -115,16 +120,16 @@ namespace realminecraftgame
                  Color.White
     );
                 }
-                if (showFlashBang)
-                {
-                    Raylib.DrawTextureEx(flashBang, new Vector2(
-                explosionPosition.X - (flashWidth *  flashScale) / 2,
-                explosionPosition.Y - (flashHeight * flashScale) / 2),
-                0f,
-                 flashScale,
-                 Color.White
-    );
-                }
+    //            if (showFlashBang)
+    //            {
+    //                Raylib.DrawTextureEx(flashBang, new Vector2(
+    //            explosionPosition.X - (flashWidth *  flashScale) / 2,
+    //            explosionPosition.Y - (flashHeight * flashScale) / 2),
+    //            0f,
+    //             flashScale,
+    //             Color.White
+    //);
+    //            }
 
                 Explosion();
                 KillDisplay displayKillCount = new KillDisplay();
