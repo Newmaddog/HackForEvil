@@ -92,16 +92,16 @@ namespace realminecraftgame
                  Color.White
     );
                 }
-                if (showFlashBang)
-                {
-                    Raylib.DrawTextureEx(flashBang, new Vector2(
-                explosionPosition.X - (flashWidth *  flashScale) / 2,
-                explosionPosition.Y - (flashHeight * flashScale) / 2),
-                0f,
-                 flashScale,
-                 Color.White
-    );
-                }
+    //            if (showFlashBang)
+    //            {
+    //                Raylib.DrawTextureEx(flashBang, new Vector2(
+    //            explosionPosition.X - (flashWidth *  flashScale) / 2,
+    //            explosionPosition.Y - (flashHeight * flashScale) / 2),
+    //            0f,
+    //             flashScale,
+    //             Color.White
+    //);
+    //            }
 
                 Explosion();
                 KillDisplay displayKillCount = new KillDisplay();
