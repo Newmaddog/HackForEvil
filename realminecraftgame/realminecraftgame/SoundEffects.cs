@@ -13,9 +13,9 @@ namespace realminecraftgame
             {"VillagerDeathSound", Raylib.LoadSound("Sounds/VillagerDeathSoundEffect.mp3") },
         };
 
-        public static bool BombSoundEffect()
+        public static Sound BombSoundEffect()
         {
-            Raylib.InitAudioDevice(); // Initiate raylib's audio system
+             // Initiate raylib's audio system
 
             Sound fallingBombSound = soundEffects["BombFallingSound"];
 
@@ -28,10 +28,10 @@ namespace realminecraftgame
                 Raylib.UnloadSound(fallingBombSound);
             }
 
-            return true;
+            return fallingBombSound;
         }
 
-        public static bool VillagerDeathSoundEffect()
+        public static Sound VillagerDeathSoundEffect()
         {
             //Raylib.InitAudioDevice(); // Initiate raylib's audio system
 
@@ -46,7 +46,7 @@ namespace realminecraftgame
                 Raylib.UnloadSound(villagerDeathSound);
             }
 
-            return true;
+            return villagerDeathSound;
         }
 
         public static bool IsSoundPlaying()

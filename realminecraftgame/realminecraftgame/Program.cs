@@ -24,32 +24,35 @@ namespace realminecraftgame
             int explosionWidth = explosion.Width;
             int flashHeight = flashBang.Height;
             int flashWidth = flashBang.Width;
-
+            Raylib.InitAudioDevice();
 
             Vector2 explosionPosition = new Vector2(0, 0);
-
+            bool isBombDroppedAudio = false;
             bool showExplosion = false;
             bool showFlashBang = false;
             Texture2D map = Raylib.LoadTexture("assets/map1.png");
+            Sound fallingBombSound = Raylib.LoadSound("Sounds/FallingBombSoundEffect.mp3");
+            Sound villiagerSound = Raylib.LoadSound("Sounds/VillagerDeathSoundEffect.mp3");
 
-            var isBombSoundAutostarted = SoundEffects.BombSoundEffect();
 
-            if ( !SoundEffects.IsSoundPlaying())
-            {
-                SoundEffects.VillagerDeathSoundEffect();
-            }
 
             while (!Raylib.WindowShouldClose())
             {
                 if (Raylib.IsMouseButtonPressed(MouseButton.Left))
                 {
+                    Raylib.PlaySound(fallingBombSound);
+                    isBombDroppedAudio = true;
                     Console.WriteLine(Raylib.GetMousePosition());
                     showFlashBang = true;
                     showExplosion = true;
                     explosionPosition = Raylib.GetMousePosition();
 
                 }
-
+                if (isBombDroppedAudio && !Raylib.IsSoundPlaying(fallingBombSound))
+                {
+                    Raylib.PlaySound(villiagerSound);
+                    isBombDroppedAudio = false;
+                }
                 Raylib.BeginDrawing();
                 Raylib.ClearBackground(Color.Black);
 
