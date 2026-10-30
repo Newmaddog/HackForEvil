@@ -26,8 +26,8 @@ namespace realminecraftgame
             this.PositionX = positionX;
             this.PositionY = positionY;
 
-            vector2.X = positionX;
-            vector2.Y = positionY;
+            vector2Position.X = (float)positionX;
+            vector2Position.Y = (float)positionY;
             IsAlive = true;
         }
     }
