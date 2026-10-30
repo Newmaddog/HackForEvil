@@ -1,5 +1,7 @@
 ﻿using Raylib_cs;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
+
 namespace realminecraftgame
 {
     internal class Program
@@ -23,6 +25,13 @@ namespace realminecraftgame
 
             bool showExplosion = false;
             Texture2D map = Raylib.LoadTexture("assets/map1.png");
+
+            var isBombSoundAutostarted = SoundEffects.BombSoundEffect();
+
+            if ( !SoundEffects.IsSoundPlaying())
+            {
+                SoundEffects.VillagerDeathSoundEffect();
+            }
 
             while (!Raylib.WindowShouldClose())
             {
