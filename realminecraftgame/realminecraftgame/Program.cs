@@ -100,14 +100,14 @@ namespace realminecraftgame
                     float size = 500f * (1f - spinTimer / 0.6f);
                     float rotation = spinTimer * 720f;
 
-                    //Raylib.DrawTexturePro(
-                    //    spinner,
-                    //    new Rectangle(0, 0, spinner.Width, spinner.Height),
-                    //    new Rectangle(explosionPosition.X, explosionPosition.Y, size, size),
-                    //    new Vector2(size / 2, size / 2),
-                    //    rotation,
-                    //    Color.White
-                    //);
+                    Raylib.DrawTexturePro(
+                        spinner,
+                        new Rectangle(0, 0, spinner.Width, spinner.Height),
+                        new Rectangle(explosionPosition.X, explosionPosition.Y, size, size),
+                        new Vector2(size / 2, size / 2),
+                        rotation,
+                        Color.White
+                    );
                 }
 
                 if (showExplosion)
