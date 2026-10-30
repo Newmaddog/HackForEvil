@@ -13,4 +13,13 @@
     <PackageReference Include="Raylib-CsLo" Version="4.2.0.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="assets\map1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\minecractmap.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
