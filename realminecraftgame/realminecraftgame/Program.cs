@@ -1,4 +1,5 @@
 ﻿using Raylib_cs;
+using System.Security.Cryptography.X509Certificates;
 
 namespace realminecraftgame
 {
@@ -11,6 +12,13 @@ namespace realminecraftgame
             Raylib.SetTargetFPS(60);
 
             Texture2D map = Raylib.LoadTexture("assets/map1.png");
+
+            var isBombSoundAutostarted = SoundEffects.BombSoundEffect();
+
+            if ( !SoundEffects.IsSoundPlaying())
+            {
+                SoundEffects.VillagerDeathSoundEffect();
+            }
 
             while (!Raylib.WindowShouldClose())
             {

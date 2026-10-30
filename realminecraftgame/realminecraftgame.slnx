@@ -1,7 +1,3 @@
 <Solution>
-  <Folder Name="/Sounds/">
-    <File Path="../../../../Downloads/FallingBombSoundEffect.mp3" />
-    <File Path="../../../../Downloads/VillagerDeathSoundEffect.mp3" />
-  </Folder>
   <Project Path="realminecraftgame/realminecraftgame.csproj" />
 </Solution>
