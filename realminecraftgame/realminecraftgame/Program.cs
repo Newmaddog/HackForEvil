@@ -11,6 +11,9 @@ namespace realminecraftgame
             SpawnSystem spawnSystem = new SpawnSystem(1400, 900, 1000);
             Raylib.SetTargetFPS(60);
             Texture2D explosion = Raylib.LoadTexture("assets/newexplo.png");
+            Texture2D villager = Raylib.LoadTexture("assets/villagerIcon.png");
+            villager.Width = 15;
+            villager.Height = 15;
             float scale = 0.3f;
             int explosionHeight = explosion.Height;
             int explosionWidth = explosion.Width;
@@ -36,6 +39,18 @@ namespace realminecraftgame
 
                 Raylib.DrawTexture(map, 0, 0, Color.White);
 
+                {
+                    for (int i = 0; i < spawnSystem.GetVillagers().Count; i++)
+                    {
+                        Raylib.DrawTexture(
+                        villager,
+                        (int)spawnSystem.GetVillagers()[i].GetPositionX(),
+                        (int)spawnSystem.GetVillagers()[i].GetPositionY(),
+                        Color.White
+                    );
+                    }
+                }
+
                 if (showExplosion)
                 {
                     Raylib.DrawTextureEx(explosion, new Vector2(
@@ -54,6 +69,7 @@ namespace realminecraftgame
 
             Raylib.UnloadTexture(map);
             Raylib.UnloadTexture(explosion);
+            Raylib.UnloadTexture(villager);
             Raylib.CloseWindow();
         }
 

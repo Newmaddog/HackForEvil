@@ -11,6 +11,8 @@ namespace realminecraftgame
 
         public List<Villager> Villagers;
 
+        public List<Villager> GetVillagers() => Villagers;
+
         public SpawnSystem(int this1, int this2, int many)
         {
             Villagers = new List<Villager>();
