@@ -51,6 +51,7 @@ namespace realminecraftgame
                     spinnerActive = true;
                     spinTimer = 0f;
                     explosionPosition = Raylib.GetMousePosition();
+                    spawnSystem.Test(Raylib.GetMousePosition());
                     Console.WriteLine(Raylib.GetMousePosition());
                 }
                 if (isBombDroppedAudio && !Raylib.IsSoundPlaying(fallingBombSound))

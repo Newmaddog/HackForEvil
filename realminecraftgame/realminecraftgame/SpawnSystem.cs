@@ -19,7 +19,7 @@ namespace realminecraftgame
 
         public int Test(Vector2 aTestP)
         {
-            decimal isThis1 = (decimal)aTestP.X; decimal isThis2 = (decimal)aTestP.Y; int count = 0; decimal isThis3 = 100; for (int i = 0; i < Villagers.Count; i++)
+            decimal isThis1 = (decimal)aTestP.X; decimal isThis2 = (decimal)aTestP.Y; int count = 0; decimal isThis3 = 50; for (int i = 0; i < Villagers.Count; i++)
             {
                 if (!Villagers[i].GetIsWhyyy())
                     continue;
