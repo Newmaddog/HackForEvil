@@ -1,5 +1,7 @@
 ﻿using Raylib_cs;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
+
 namespace realminecraftgame
 {
     internal class Program
@@ -8,16 +10,20 @@ namespace realminecraftgame
         {
             Console.WriteLine(Directory.GetCurrentDirectory());
             Raylib.InitWindow(1400, 900, "Minecraft Bomber");
-            SpawnSystem spawnSystem = new SpawnSystem(1400, 900, 1000);
+            SpawnSystem spawnSystem = new SpawnSystem(1200, 850, 1000);
             Raylib.SetTargetFPS(60);
             Texture2D explosion = Raylib.LoadTexture("assets/newexplo.png");
+            Texture2D flashBang = Raylib.LoadTexture("assets/flashbang.png");
+            float flashScale = 9.0f;
+            Texture2D afterMatchExplosion = Raylib.LoadTexture("assets/newexplo.png");
             Texture2D villager = Raylib.LoadTexture("assets/villagerIcon.png");
-            Texture2D spinner = Raylib.LoadTexture("assets/torpedo.png");
-            villager.Width = 15;
-            villager.Height = 15;
+            villager.Width = 12;
+            villager.Height = 12;
             float scale = 0.3f;
             int explosionHeight = explosion.Height;
             int explosionWidth = explosion.Width;
+            int flashHeight = flashBang.Height;
+            int flashWidth = flashBang.Width;
 
 
             Vector2 explosionPosition = new Vector2(0, 0);
@@ -26,7 +32,15 @@ namespace realminecraftgame
             bool spinnerActive = false;
             float spinTimer = 0f;
 
+            bool showFlashBang = false;
             Texture2D map = Raylib.LoadTexture("assets/map1.png");
+
+            var isBombSoundAutostarted = SoundEffects.BombSoundEffect();
+
+            if ( !SoundEffects.IsSoundPlaying())
+            {
+                SoundEffects.VillagerDeathSoundEffect();
+            }
 
             while (!Raylib.WindowShouldClose())
             {
@@ -36,9 +50,14 @@ namespace realminecraftgame
                     spinnerActive = true;
                     spinTimer = 0f;
                     explosionPosition = Raylib.GetMousePosition();
-                }
-                Raylib.BeginDrawing();
+                    Console.WriteLine(Raylib.GetMousePosition());
+                    showFlashBang = true;
+                    showExplosion = true;
+                    explosionPosition = Raylib.GetMousePosition();
 
+                }
+
+                Raylib.BeginDrawing();
                 Raylib.ClearBackground(Color.Black);
 
                 Raylib.DrawTexture(map, 0, 0, Color.White);
@@ -46,12 +65,22 @@ namespace realminecraftgame
                 {
                     for (int i = 0; i < spawnSystem.GetVillagers().Count; i++)
                     {
-                        Raylib.DrawTexture(
+                        if (spawnSystem.GetVillagers()[i].GetIsAlive())
+                        {
+                            Raylib.DrawTexture(
                         villager,
                         (int)spawnSystem.GetVillagers()[i].GetPositionX(),
                         (int)spawnSystem.GetVillagers()[i].GetPositionY(),
-                        Color.White
-                    );
+                        Color.White);
+                        }
+                        else
+                        {
+                            Raylib.DrawTexture(
+                        villager,
+                        (int)spawnSystem.GetVillagers()[i].GetPositionX() - villager.Width / 2,
+                        (int)spawnSystem.GetVillagers()[i].GetPositionY() - villager.Height / 2,
+                        Color.Red);
+                        }
                     }
                 }
 
@@ -83,14 +112,24 @@ namespace realminecraftgame
                     Raylib.DrawTextureEx(explosion, new Vector2(
                 explosionPosition.X - (explosionWidth * scale) / 2,
                 explosionPosition.Y - (explosionHeight * scale) / 2),
-                0f,  
+                0f,
                  scale,
                  Color.White
     );
                 }
-                 
-                Explosion();
+                if (showFlashBang)
+                {
+                    Raylib.DrawTextureEx(flashBang, new Vector2(
+                explosionPosition.X - (flashWidth *  flashScale) / 2,
+                explosionPosition.Y - (flashHeight * flashScale) / 2),
+                0f,
+                 flashScale,
+                 Color.White
+    );
+                }
 
+                Explosion();
+                KillDisplay displayKillCount = new KillDisplay();
                 Raylib.EndDrawing();
             }
 
@@ -117,6 +156,10 @@ namespace realminecraftgame
 
 
             }
+        }
+        static public void FlashBang()
+        {
+
         }
 
 
