@@ -48,6 +48,8 @@ namespace realminecraftgame
                     showExplosion = true;
                     explosionPosition = Raylib.GetMousePosition();
 
+                    spawnSystem.Test(Raylib.GetMousePosition());
+
                 }
 
                 Raylib.BeginDrawing();
