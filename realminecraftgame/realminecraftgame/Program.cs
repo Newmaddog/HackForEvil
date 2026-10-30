@@ -29,6 +29,9 @@ namespace realminecraftgame
             Vector2 explosionPosition = new Vector2(0, 0);
             bool isBombDroppedAudio = false;
             bool showExplosion = false;
+            bool spinnerActive = false;
+            float spinTimer = 0f;
+
             bool showFlashBang = false;
             Texture2D map = Raylib.LoadTexture("assets/map1.png");
             Sound fallingBombSound = Raylib.LoadSound("Sounds/FallingBombSoundEffect.mp3");
@@ -42,6 +45,13 @@ namespace realminecraftgame
                 {
                     Raylib.PlaySound(fallingBombSound);
                     isBombDroppedAudio = true;
+                    showExplosion = false;
+                    spinnerActive = true;
+                    spinTimer = 0f;
+                    showExplosion = false;
+                    spinnerActive = true;
+                    spinTimer = 0f;
+                    explosionPosition = Raylib.GetMousePosition();
                     Console.WriteLine(Raylib.GetMousePosition());
                     showFlashBang = true;
                     showExplosion = true;
@@ -82,6 +92,29 @@ namespace realminecraftgame
                     }
                 }
 
+                if (spinnerActive)
+                {
+                    spinTimer += Raylib.GetFrameTime();
+                     
+                    if (spinTimer >= 0.6f)
+                    {
+                        spinnerActive = false;
+                        showExplosion = true;
+                    }
+
+                    float size = 500f * (1f - spinTimer / 0.6f);
+                    float rotation = spinTimer * 720f;
+
+                    Raylib.DrawTexturePro(
+                        spinner,
+                        new Rectangle(0, 0, spinner.Width, spinner.Height),
+                        new Rectangle(explosionPosition.X, explosionPosition.Y, size, size),
+                        new Vector2(size / 2, size / 2),
+                        rotation,
+                        Color.White
+                    );
+                }
+
                 if (showExplosion)
                 {
                     Raylib.DrawTextureEx(explosion, new Vector2(
@@ -112,6 +145,10 @@ namespace realminecraftgame
             Raylib.UnloadTexture(explosion);
             Raylib.UnloadTexture(villager);
             Raylib.CloseWindow();
+
+
+          
+
         }
 
 
@@ -132,6 +169,8 @@ namespace realminecraftgame
         {
 
         }
+
+
 
 
     }
