@@ -49,6 +49,10 @@ namespace realminecraftgame
                     showExplosion = false;
                     spinnerActive = true;
                     spinTimer = 0f;
+                    showExplosion = false;
+                    spinnerActive = true;
+                    spinTimer = 0f;
+                    explosionPosition = Raylib.GetMousePosition();
                     Console.WriteLine(Raylib.GetMousePosition());
                     showFlashBang = true;
                     showExplosion = true;
