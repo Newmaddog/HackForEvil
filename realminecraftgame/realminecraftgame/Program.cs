@@ -91,13 +91,13 @@ namespace realminecraftgame
                 {
                     spinTimer += Raylib.GetFrameTime();
                      
-                    if (spinTimer >= 0.6f)
+                    if (spinTimer >= 3.6f)
                     {
                         spinnerActive = false;
                         showExplosion = true;
                     }
 
-                    float size = 500f * (1f - spinTimer / 0.6f);
+                    float size = 500f * (1f - spinTimer / 3.6f);
                     float rotation = spinTimer * 720f;
 
                     Raylib.DrawTexturePro(
