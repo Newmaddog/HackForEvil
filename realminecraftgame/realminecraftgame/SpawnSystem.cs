@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace realminecraftgame
@@ -16,15 +17,19 @@ namespace realminecraftgame
         }
 
 
-        public void Test(Vector2 aTestP)
+        public int Test(Vector2 aTestP)
         {
             decimal isThis1 = (decimal)aTestP.X;
             decimal isThis2 = (decimal)aTestP.Y;
+            int count = 0;
 
-            decimal isThis3 = 50;
+            decimal isThis3 = 100;
 
             for (int i = 0; i < Villagers.Count; i++)
             {
+                if (!Villagers[i].GetIsAlive())
+                    continue;
+
                 decimal te1 = Villagers[i].GetIStHIS1();
                 decimal te2 = Villagers[i].GetIStHIS2();
 
@@ -34,11 +39,12 @@ namespace realminecraftgame
                 if ((dx * dx) + (dy * dy) <= isThis3 * isThis3)
                 {
                     Villagers[i].IDie();
+                    count++;
                 }
 
             }
 
-
+            return count;
         }
 
     }
