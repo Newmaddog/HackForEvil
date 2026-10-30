@@ -17,6 +17,8 @@ namespace realminecraftgame
             float flashScale = 9.0f;
             Texture2D afterMatchExplosion = Raylib.LoadTexture("assets/newexplo.png");
             Texture2D villager = Raylib.LoadTexture("assets/villagerIcon.png");
+            Texture2D spinner = Raylib.LoadTexture("assets/torpedo.png");
+
             villager.Width = 12;
             villager.Height = 12;
             float scale = 0.3f;
@@ -49,15 +51,8 @@ namespace realminecraftgame
                     showExplosion = false;
                     spinnerActive = true;
                     spinTimer = 0f;
-                    showExplosion = false;
-                    spinnerActive = true;
-                    spinTimer = 0f;
                     explosionPosition = Raylib.GetMousePosition();
                     Console.WriteLine(Raylib.GetMousePosition());
-                    showFlashBang = true;
-                    showExplosion = true;
-                    explosionPosition = Raylib.GetMousePosition();
-
                 }
 
                 Raylib.BeginDrawing();
