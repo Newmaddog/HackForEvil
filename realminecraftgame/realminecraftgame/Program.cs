@@ -8,12 +8,12 @@ namespace realminecraftgame
         {
             Console.WriteLine(Directory.GetCurrentDirectory());
             Raylib.InitWindow(1400, 900, "Minecraft Bomber");
-            SpawnSystem spawnSystem = new SpawnSystem(1400, 900, 1000);
+            SpawnSystem spawnSystem = new SpawnSystem(1200, 850, 1000);
             Raylib.SetTargetFPS(60);
             Texture2D explosion = Raylib.LoadTexture("assets/newexplo.png");
             Texture2D villager = Raylib.LoadTexture("assets/villagerIcon.png");
-            villager.Width = 15;
-            villager.Height = 15;
+            villager.Width = 12;
+            villager.Height = 12;
             float scale = 0.3f;
             int explosionHeight = explosion.Height;
             int explosionWidth = explosion.Width;
@@ -54,8 +54,8 @@ namespace realminecraftgame
                         {
                             Raylib.DrawTexture(
                         villager,
-                        (int)spawnSystem.GetVillagers()[i].GetPositionX(),
-                        (int)spawnSystem.GetVillagers()[i].GetPositionY(),
+                        (int)spawnSystem.GetVillagers()[i].GetPositionX() - villager.Width / 2,
+                        (int)spawnSystem.GetVillagers()[i].GetPositionY() - villager.Height / 2,
                         Color.Red);
                         }
                     }
