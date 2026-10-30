@@ -8,6 +8,7 @@ namespace realminecraftgame
         {
             Console.WriteLine(Directory.GetCurrentDirectory());
             Raylib.InitWindow(1400, 900, "Minecraft Bomber");
+            SpawnSystem spawnSystem = new SpawnSystem(1400, 900, 1000);
             Raylib.SetTargetFPS(60);
             Texture2D explosion = Raylib.LoadTexture("assets/newexplo.png");
             Vector2 explosionPosition = new Vector2(0, 0);
