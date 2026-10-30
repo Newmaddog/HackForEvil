@@ -42,12 +42,22 @@ namespace realminecraftgame
                 {
                     for (int i = 0; i < spawnSystem.GetVillagers().Count; i++)
                     {
-                        Raylib.DrawTexture(
+                        if (spawnSystem.GetVillagers()[i].GetIsAlive())
+                        {
+                            Raylib.DrawTexture(
                         villager,
                         (int)spawnSystem.GetVillagers()[i].GetPositionX(),
                         (int)spawnSystem.GetVillagers()[i].GetPositionY(),
-                        Color.White
-                    );
+                        Color.White);
+                        }
+                        else
+                        {
+                            Raylib.DrawTexture(
+                        villager,
+                        (int)spawnSystem.GetVillagers()[i].GetPositionX(),
+                        (int)spawnSystem.GetVillagers()[i].GetPositionY(),
+                        Color.Red);
+                        }
                     }
                 }
 
@@ -56,12 +66,12 @@ namespace realminecraftgame
                     Raylib.DrawTextureEx(explosion, new Vector2(
                 explosionPosition.X - (explosionWidth * scale) / 2,
                 explosionPosition.Y - (explosionHeight * scale) / 2),
-                0f,  
+                0f,
                  scale,
                  Color.White
     );
                 }
-                 
+
                 Explosion();
 
                 Raylib.EndDrawing();
