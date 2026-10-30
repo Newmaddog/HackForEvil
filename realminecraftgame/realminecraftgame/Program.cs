@@ -1,5 +1,5 @@
 ﻿using Raylib_cs;
-
+using System.Numerics;
 namespace realminecraftgame
 {
     internal class Program
@@ -15,9 +15,9 @@ namespace realminecraftgame
             while (!Raylib.WindowShouldClose())
             {
                 Raylib.BeginDrawing();
-
+                
                 Raylib.ClearBackground(Color.Black);
-
+                Explosion();
                 Raylib.DrawTexture(map, 0, 0, Color.White);
 
                 Raylib.EndDrawing();
@@ -26,5 +26,22 @@ namespace realminecraftgame
             Raylib.UnloadTexture(map);
             Raylib.CloseWindow();
         }
+
+
+
+
+      static public void Explosion()
+        {
+            if (Raylib.IsMouseButtonPressed(MouseButton.Left))
+            {
+                Vector2 position = Raylib.GetMousePosition();
+
+                Console.WriteLine($"Clicked at X: {position.X}, Y: {position.Y}");
+
+
+            }
+        }
+
+     
     }
 }
